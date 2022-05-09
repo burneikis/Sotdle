@@ -1,10 +1,18 @@
 <script>
-	export let name;
+	export let guess1;
+	export let guess2;
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<header>
+	<img src="Sotdle.png" alt="Sotdle">
+	<br>
+	<a href="https://github.com/AlexBurneikis/Sotdle">Github</a>
+	</header>
+	<body>
+		<p>{guess1}</p>
+		<p>{guess2}</p>
+	</body>
 </main>
 
 <style>
@@ -15,10 +23,9 @@
 		margin: 0 auto;
 	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
+	p {
+		color: black;
+		font-size: large;
 		font-weight: 100;
 	}
 
