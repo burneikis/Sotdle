@@ -5,15 +5,11 @@
 	let answer;
 	let imgsrc;
 
-	let guessno;
+	let guessno = 1;
 	let guess;
 
-	export let guess1;
-	export let guess2;
-	export let guess3;
-	export let guess4;
-	export let guess5;
-	export let guess6;
+	let guessParagraph = ["", "", "", "", "", ""];
+	let gpClass = ["", "", "", "", "", ""];
 
 	function setup() {
 		answer = Islands[Math.floor(Math.random() * Islands.length)];
@@ -29,6 +25,7 @@
 			});
 		});
 	}
+
 	onMount(async () => {
 		loadIslands();
 	});
@@ -39,13 +36,22 @@
 		}
 		return false;
 	}
+
 	function getIsland(x) {
 		return Islands.find((i) => i.Name === x);
+	}
+
+	function isWin(x) {
+		return answer["Name"] === x;
 	}
 
 	function guessButton() {
 		if (guessno <= 6) {
 			if (isIsland(guess)) {
+				if (isWin(guess)) {
+					gpClass[guessno - 1] = 'win';
+					guessParagraph[guessno - 1] = guess;
+				}
 				let guessIsland = getIsland(guess);
 				guessno += 1;
 			}
@@ -54,105 +60,105 @@
 </script>
 
 <datalist id="options">
-	<option value="Cannon Cove"></option>
-<option value="Crescent Isle"></option>
-<option value="Lone Cove"></option>
-<option value="Mermaids Hideaway"></option>
-<option value="Sailors Bounty"></option>
-<option value="Smugglers Bay"></option>
-<option value="Wanderers Refuge"></option>
-<option value="Crooks Hollow"></option>
-<option value="Devils Ridge"></option>
-<option value="Discovery Ridge"></option>
-<option value="Plunder Valley"></option>
-<option value="Shark Bait Cove"></option>
-<option value="Snake Island"></option>
-<option value="Thieves Haven"></option>
-<option value="Krakens Fall"></option>
-<option value="Marauders Arch"></option>
-<option value="Old Faithful Isle"></option>
-<option value="Shipwreck Bay"></option>
-<option value="The Crooked Masts"></option>
-<option value="The Sunken Grove"></option>
-<option value="Ashen Reaches"></option>
-<option value="Fetchers Rest"></option>
-<option value="Flintlock Peninsula"></option>
-<option value="Rubys Fall"></option>
-<option value="The Devils Thirst"></option>
-<option value="Boulder Cay"></option>
-<option value="Lagoon of Whispers"></option>
-<option value="Lonely Isle"></option>
-<option value="Picaroon Palms"></option>
-<option value="Rapier Cay"></option>
-<option value="Rum Runner Isle"></option>
-<option value="Salty Sands"></option>
-<option value="Sandy Shallows"></option>
-<option value="Sea Dogs Rest"></option>
-<option value="Twin Groves"></option>
-<option value="Barnacle Cay"></option>
-<option value="Booty Isle"></option>
-<option value="Castaway Isle"></option>
-<option value="Chicken Isle"></option>
-<option value="Cutlass Cay"></option>
-<option value="Fools Lagoon"></option>
-<option value="Lookout Point"></option>
-<option value="Mutineer Rock"></option>
-<option value="Old Salts Atoll"></option>
-<option value="Paradise Spring"></option>
-<option value="Black Sand Atoll"></option>
-<option value="Black Water Enclave"></option>
-<option value="Blind Mans Lagoon"></option>
-<option value="Isle of Last Words"></option>
-<option value="Liars Backbone"></option>
-<option value="Plunderers Plight"></option>
-<option value="Scurvy Isley"></option>
-<option value="Shark Tooth Key"></option>
-<option value="Shiver Retreat"></option>
-<option value="Tri Rock Isle"></option>
-<option value="Brimstone Rock"></option>
-<option value="Cinder Islet"></option>
-<option value="Cursewater Shores"></option>
-<option value="Flames End"></option>
-<option value="Forsaken Brink"></option>
-<option value="Glowstone Cay"></option>
-<option value="Magmas Tide"></option>
-<option value="Roaring Sands"></option>
-<option value="Scorched Pass"></option>
-<option value="Keel Haul Fort"></option>
-<option value="Hidden Spring Keep"></option>
-<option value="Sailors Knot Stronghold"></option>
-<option value="Lost Gold Fort"></option>
-<option value="Fort of The Damned"></option>
-<option value="The Crows Nest Fortress"></option>
-<option value="Skull Keep"></option>
-<option value="Kraken Watchtower"></option>
-<option value="Shark Fin Camp"></option>
-<option value="Molten Sands Fortress"></option>
-<option value="Sanctuary Outpost"></option>
-<option value="Golden Sands Outpost"></option>
-<option value="Plunder Outpost"></option>
-<option value="Ancient Spire Outpost"></option>
-<option value="Galleons Grave Outpost"></option>
-<option value="Dagger Tooth Outpost"></option>
-<option value="Morrows Peak Outpost"></option>Í
+	<option value="Cannon Cove" />
+	<option value="Crescent Isle" />
+	<option value="Lone Cove" />
+	<option value="Mermaids Hideaway" />
+	<option value="Sailors Bounty" />
+	<option value="Smugglers Bay" />
+	<option value="Wanderers Refuge" />
+	<option value="Crooks Hollow" />
+	<option value="Devils Ridge" />
+	<option value="Discovery Ridge" />
+	<option value="Plunder Valley" />
+	<option value="Shark Bait Cove" />
+	<option value="Snake Island" />
+	<option value="Thieves Haven" />
+	<option value="Krakens Fall" />
+	<option value="Marauders Arch" />
+	<option value="Old Faithful Isle" />
+	<option value="Shipwreck Bay" />
+	<option value="The Crooked Masts" />
+	<option value="The Sunken Grove" />
+	<option value="Ashen Reaches" />
+	<option value="Fetchers Rest" />
+	<option value="Flintlock Peninsula" />
+	<option value="Rubys Fall" />
+	<option value="The Devils Thirst" />
+	<option value="Boulder Cay" />
+	<option value="Lagoon of Whispers" />
+	<option value="Lonely Isle" />
+	<option value="Picaroon Palms" />
+	<option value="Rapier Cay" />
+	<option value="Rum Runner Isle" />
+	<option value="Salty Sands" />
+	<option value="Sandy Shallows" />
+	<option value="Sea Dogs Rest" />
+	<option value="Twin Groves" />
+	<option value="Barnacle Cay" />
+	<option value="Booty Isle" />
+	<option value="Castaway Isle" />
+	<option value="Chicken Isle" />
+	<option value="Cutlass Cay" />
+	<option value="Fools Lagoon" />
+	<option value="Lookout Point" />
+	<option value="Mutineer Rock" />
+	<option value="Old Salts Atoll" />
+	<option value="Paradise Spring" />
+	<option value="Black Sand Atoll" />
+	<option value="Black Water Enclave" />
+	<option value="Blind Mans Lagoon" />
+	<option value="Isle of Last Words" />
+	<option value="Liars Backbone" />
+	<option value="Plunderers Plight" />
+	<option value="Scurvy Isley" />
+	<option value="Shark Tooth Key" />
+	<option value="Shiver Retreat" />
+	<option value="Tri Rock Isle" />
+	<option value="Brimstone Rock" />
+	<option value="Cinder Islet" />
+	<option value="Cursewater Shores" />
+	<option value="Flames End" />
+	<option value="Forsaken Brink" />
+	<option value="Glowstone Cay" />
+	<option value="Magmas Tide" />
+	<option value="Roaring Sands" />
+	<option value="Scorched Pass" />
+	<option value="Keel Haul Fort" />
+	<option value="Hidden Spring Keep" />
+	<option value="Sailors Knot Stronghold" />
+	<option value="Lost Gold Fort" />
+	<option value="Fort of The Damned" />
+	<option value="The Crows Nest Fortress" />
+	<option value="Skull Keep" />
+	<option value="Kraken Watchtower" />
+	<option value="Shark Fin Camp" />
+	<option value="Molten Sands Fortress" />
+	<option value="Sanctuary Outpost" />
+	<option value="Golden Sands Outpost" />
+	<option value="Plunder Outpost" />
+	<option value="Ancient Spire Outpost" />
+	<option value="Galleons Grave Outpost" />
+	<option value="Dagger Tooth Outpost" />
+	<option value="Morrows Peak Outpost" />Í
 </datalist>
 <main>
 	<header>
-		<img class="logo" src="Sotdle.png" alt="Sotdle"/>
+		<img class="logo" src="Sotdle.png" alt="Sotdle" />
 	</header>
 	<body>
 		<img src={imgsrc} alt="island" />
 		<br />
-		<p>{guess1}</p>
-		<p>{guess2}</p>
-		<p>{guess3}</p>
-		<p>{guess4}</p>
-		<p>{guess5}</p>
-		<p>{guess6}</p>
+		<p class={gpClass[0]}>{guessParagraph[0]}</p>
+		<p class={gpClass[1]}>{guessParagraph[1]}</p>
+		<p class={gpClass[2]}>{guessParagraph[2]}</p>
+		<p class={gpClass[3]}>{guessParagraph[3]}</p>
+		<p class={gpClass[4]}>{guessParagraph[4]}</p>
+		<p class={gpClass[5]}>{guessParagraph[5]}</p>
 		<div class="input">
-		<input bind:value={guess} list="options" />
-		<button on:click={guessButton}>Guess</button>
-	</div>
+			<input bind:value={guess} list="options" />
+			<button on:click={guessButton}>Guess</button>
+		</div>
 	</body>
 </main>
 
@@ -196,7 +202,10 @@
 		margin: 0px;
 		margin-top: 5px;
 		width: 60px;
-		height:30px;
+		height: 30px;
 		border-radius: 5px;
+	}
+	.win {
+		color: greenyellow;
 	}
 </style>
