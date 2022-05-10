@@ -8,6 +8,8 @@
 	let guessno = 1;
 	let guess;
 
+	let buttonText = "Guess";
+
 	let guessParagraph = ["", "", "", "", "", ""];
 	let gpClass = ["", "", "", "", "", ""];
 
@@ -28,6 +30,8 @@
 					option.value = item["Name"];
 					list.appendChild(option);
 				});
+
+				fill();
 
 				setup();
 			});
@@ -112,6 +116,16 @@
 		return direction;
 	}
 
+	function clear() {
+		guess = "";
+	}
+	function fill() {
+		guess = Islands[0]["Name"];
+	}
+	function showAnswer() {
+		alert('The answer was ' + answer.Name + '.');
+	}
+
 	function guessButton() {
 		if (guessno <= 6) {
 			if (isIsland(guess)) {
@@ -135,9 +149,18 @@
 				console.log(list.children[index]);
 				list.children[index].remove();
 
-				guessParagraph[guessno - 1] = guess + " " + direction(guessIsland);
+				guessParagraph[guessno - 1] =
+					guess + " " + direction(guessIsland);
+
 				guessno += 1;
+				if (guessno === 7) {
+					buttonText = "Answer";
+					guessno += 62;
+				}
+				fill();
 			}
+		} else if (guessno === 69) {
+			showAnswer();
 		}
 	}
 </script>
@@ -158,8 +181,8 @@
 		<p class={gpClass[4]}>{guessParagraph[4]}</p>
 		<p class={gpClass[5]}>{guessParagraph[5]}</p>
 		<div class="input">
-			<input bind:value={guess} list="options" />
-			<button on:click={guessButton}>Guess</button>
+			<input bind:value={guess} list="options" on:focus={clear} />
+			<button on:click={guessButton}>{buttonText}</button>
 		</div>
 	</body>
 </main>
