@@ -38,6 +38,13 @@
 	});
 </script>
 
+<datalist id="options">
+	<option value="Thieves Haven" /><option value="Chicken Isle" /><option
+		value="Snake Island"
+	/><option value="Devils Ridge" /><option value="Crooks Hollow" /><option
+		value="Paradise Spring"
+	/><option value="Old Salts Atoll" />
+</datalist>
 <main>
 	<header>
 		<img src="Sotdle.png" alt="Sotdle" class="logo" />
@@ -47,22 +54,19 @@
 		<img class="img" src={imgsrc} alt="island" />
 	</header>
 	<body>
-		<input list="options" />
-		<datalist id="options">
-			<option value="Thieves Haven" /><option
-				value="Chicken Isle"
-			/><option value="Snake Island" /><option
-				value="Devils Ridge"
-			/><option value="Crooks Hollow" /><option
-				value="Paradise Spring"
-			/><option value="Old Salts Atoll" />
-		</datalist>
 		<p class={g1c}>{guess1}</p>
+		<br />
 		<p class={g2c}>{guess2}</p>
+		<br />
 		<p class={g3c}>{guess3}</p>
+		<br />
 		<p class={g4c}>{guess4}</p>
+		<br />
 		<p class={g5c}>{guess5}</p>
+		<br />
 		<p class={g6c}>{guess6}</p>
+		<br />
+		<input list="options" />
 	</body>
 </main>
 
@@ -73,15 +77,24 @@
 		max-width: 240px;
 		margin: 0 auto;
 	}
-	
+
 	input {
 		border-radius: 5px;
+		font-size: 12px;
+		width: 100px;
+		height: 20px;
+		background-color: lightgrey;
 	}
 
 	p {
 		color: black;
-		font-size: large;
+		font-size: 12px;
 		font-weight: 100;
+		display: inline-block;
+		width: 240px;
+		height: 20px;
+		background-color: lightgray;
+		border-radius: 5px;
 	}
 	.logo {
 		width: 70px;
