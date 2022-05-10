@@ -21,6 +21,14 @@
 		fetch("islands.json").then((res) => {
 			res.json().then((data) => {
 				Islands = data;
+
+				var list = document.getElementById("options");
+				Islands.forEach(function (item) {
+					var option = document.createElement("option");
+					option.value = item["Name"];
+					list.appendChild(option);
+				});
+
 				setup();
 			});
 		});
@@ -45,103 +53,42 @@
 		return answer["Name"] === x;
 	}
 
+	function is_same_region(x) {
+		return answer["Region"] === x["Region"];
+	}
+
 	function guessButton() {
 		if (guessno <= 6) {
 			if (isIsland(guess)) {
 				if (isWin(guess)) {
-					gpClass[guessno - 1] = 'win';
+					gpClass[guessno - 1] = "win";
 					guessParagraph[guessno - 1] = guess;
+					guessno = 7;
+					return;
 				}
+
+				if (is_same_region) {
+					gpClass[guessno - 1] = "close";
+				}
+
 				let guessIsland = getIsland(guess);
+
+				const index = Islands.indexOf(guessIsland);
+				Islands.splice(index, 1);
+
+				var list = document.getElementById("options");
+				console.log(list.children[index]);
+				list.children[index].remove();
+
+				guessParagraph[guessno - 1] = guess;
 				guessno += 1;
 			}
 		}
 	}
 </script>
 
-<datalist id="options">
-	<option value="Cannon Cove" />
-	<option value="Crescent Isle" />
-	<option value="Lone Cove" />
-	<option value="Mermaids Hideaway" />
-	<option value="Sailors Bounty" />
-	<option value="Smugglers Bay" />
-	<option value="Wanderers Refuge" />
-	<option value="Crooks Hollow" />
-	<option value="Devils Ridge" />
-	<option value="Discovery Ridge" />
-	<option value="Plunder Valley" />
-	<option value="Shark Bait Cove" />
-	<option value="Snake Island" />
-	<option value="Thieves Haven" />
-	<option value="Krakens Fall" />
-	<option value="Marauders Arch" />
-	<option value="Old Faithful Isle" />
-	<option value="Shipwreck Bay" />
-	<option value="The Crooked Masts" />
-	<option value="The Sunken Grove" />
-	<option value="Ashen Reaches" />
-	<option value="Fetchers Rest" />
-	<option value="Flintlock Peninsula" />
-	<option value="Rubys Fall" />
-	<option value="The Devils Thirst" />
-	<option value="Boulder Cay" />
-	<option value="Lagoon of Whispers" />
-	<option value="Lonely Isle" />
-	<option value="Picaroon Palms" />
-	<option value="Rapier Cay" />
-	<option value="Rum Runner Isle" />
-	<option value="Salty Sands" />
-	<option value="Sandy Shallows" />
-	<option value="Sea Dogs Rest" />
-	<option value="Twin Groves" />
-	<option value="Barnacle Cay" />
-	<option value="Booty Isle" />
-	<option value="Castaway Isle" />
-	<option value="Chicken Isle" />
-	<option value="Cutlass Cay" />
-	<option value="Fools Lagoon" />
-	<option value="Lookout Point" />
-	<option value="Mutineer Rock" />
-	<option value="Old Salts Atoll" />
-	<option value="Paradise Spring" />
-	<option value="Black Sand Atoll" />
-	<option value="Black Water Enclave" />
-	<option value="Blind Mans Lagoon" />
-	<option value="Isle of Last Words" />
-	<option value="Liars Backbone" />
-	<option value="Plunderers Plight" />
-	<option value="Scurvy Isley" />
-	<option value="Shark Tooth Key" />
-	<option value="Shiver Retreat" />
-	<option value="Tri Rock Isle" />
-	<option value="Brimstone Rock" />
-	<option value="Cinder Islet" />
-	<option value="Cursewater Shores" />
-	<option value="Flames End" />
-	<option value="Forsaken Brink" />
-	<option value="Glowstone Cay" />
-	<option value="Magmas Tide" />
-	<option value="Roaring Sands" />
-	<option value="Scorched Pass" />
-	<option value="Keel Haul Fort" />
-	<option value="Hidden Spring Keep" />
-	<option value="Sailors Knot Stronghold" />
-	<option value="Lost Gold Fort" />
-	<option value="Fort of The Damned" />
-	<option value="The Crows Nest Fortress" />
-	<option value="Skull Keep" />
-	<option value="Kraken Watchtower" />
-	<option value="Shark Fin Camp" />
-	<option value="Molten Sands Fortress" />
-	<option value="Sanctuary Outpost" />
-	<option value="Golden Sands Outpost" />
-	<option value="Plunder Outpost" />
-	<option value="Ancient Spire Outpost" />
-	<option value="Galleons Grave Outpost" />
-	<option value="Dagger Tooth Outpost" />
-	<option value="Morrows Peak Outpost" />Í
-</datalist>
+<datalist id="options" />
+
 <main>
 	<header>
 		<img class="logo" src="Sotdle.png" alt="Sotdle" />
@@ -206,6 +153,9 @@
 		border-radius: 5px;
 	}
 	.win {
-		color: greenyellow;
+		color: rgb(77, 123, 8);
+	}
+	.close {
+		color: yellow;
 	}
 </style>
