@@ -6,15 +6,10 @@
 	export let guess4;
 	export let guess5;
 	export let guess6;
-	export let g1c;
-	export let g2c;
-	export let g3c;
-	export let g4c;
-	export let g5c;
-	export let g6c;
 
 	let Islands = [];
 
+	let guess;
 	let answer;
 	let guessno;
 	let imgsrc;
@@ -36,6 +31,25 @@
 	onMount(async () => {
 		loadIslands();
 	});
+
+	function isIsland(x) {
+		if (Islands.find((i) => i.Name === x)) {
+			return true;
+		}
+		return false;
+	}
+	function getIsland(x) {
+		return Islands.find((i) => i.Name === x);
+	}
+
+	function guessButton() {
+		if (guessno <= 6) {
+			if (isIsland(guess)) {
+				let guessIsland = getIsland(guess);
+				guessno += 1;
+			}
+		}
+	}
 </script>
 
 <datalist id="options">
@@ -50,25 +64,12 @@
 		<img src="Sotdle.png" alt="Sotdle" class="logo" />
 		<br />
 		<a href="https://github.com/AlexBurneikis/Sotdle">Github</a>
-		<br />
-		<img class="img" src={imgsrc} alt="island" />
 	</header>
 	<body>
-		<p class={g1c}>{guess1}</p>
+		<img class="img" src={imgsrc} alt="island" />
+		<input bind:value={guess} list="options" />
 		<br />
-		<p class={g2c}>{guess2}</p>
-		<br />
-		<p class={g3c}>{guess3}</p>
-		<br />
-		<p class={g4c}>{guess4}</p>
-		<br />
-		<p class={g5c}>{guess5}</p>
-		<br />
-		<p class={g6c}>{guess6}</p>
-		<br />
-		<input list="options" />
-		<br />
-		<button>Guess</button>
+		<button on:click={guessButton}>Guess</button>
 	</body>
 </main>
 
@@ -96,16 +97,6 @@
 		background-color: lightgrey;
 	}
 
-	p {
-		color: black;
-		font-size: 12px;
-		font-weight: 100;
-		display: inline-block;
-		width: 240px;
-		height: 20px;
-		background-color: lightgray;
-		border-radius: 5px;
-	}
 	.logo {
 		width: 70px;
 	}
