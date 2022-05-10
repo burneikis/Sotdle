@@ -12,6 +12,7 @@
 
 	let guessParagraph = ["", "", "", "", "", ""];
 	let gpClass = ["", "", "", "", "", ""];
+	let guessDirection = ["", "", "", "", "", ""];
 
 	function setup() {
 		answer = Islands[Math.floor(Math.random() * Islands.length)];
@@ -150,7 +151,9 @@
 				list.children[index].remove();
 
 				guessParagraph[guessno - 1] =
-					guess + " " + direction(guessIsland);
+					guess + " ";
+				guessDirection[guessno - 1] =
+					direction(guessIsland);
 
 				guessno += 1;
 				if (guessno === 7) {
@@ -174,20 +177,46 @@
 	<body>
 		<img src={imgsrc} alt="island" />
 		<br />
-		<p class={gpClass[0]}>{guessParagraph[0]}</p>
-		<p class={gpClass[1]}>{guessParagraph[1]}</p>
-		<p class={gpClass[2]}>{guessParagraph[2]}</p>
-		<p class={gpClass[3]}>{guessParagraph[3]}</p>
-		<p class={gpClass[4]}>{guessParagraph[4]}</p>
-		<p class={gpClass[5]}>{guessParagraph[5]}</p>
+		<p class={gpClass[0]}>{guessParagraph[0]}<span>{guessDirection[0]}</span></p>
+		<p class={gpClass[1]}>{guessParagraph[1]}<span>{guessDirection[1]}</span></p>
+		<p class={gpClass[2]}>{guessParagraph[2]}<span>{guessDirection[2]}</span></p>
+		<p class={gpClass[3]}>{guessParagraph[3]}<span>{guessDirection[3]}</span></p>
+		<p class={gpClass[4]}>{guessParagraph[4]}<span>{guessDirection[4]}</span></p>
+		<p class={gpClass[5]}>{guessParagraph[5]}<span>{guessDirection[5]}</span></p>
 		<div class="input">
 			<input bind:value={guess} list="options" on:focus={clear} />
 			<button on:click={guessButton}>{buttonText}</button>
 		</div>
 	</body>
+	<footer>
+		<h6>Alex Burneikis 2022 <a href="https://github.com/alexburneikis/sotdle">Github</a> </h6>
+	</footer>
 </main>
 
 <style>
+	@font-face {
+		font-family: 'Sotfont2';
+		src: url(/sot_fonts/font2.ttf);
+	}
+	@font-face {
+		font-family: 'Sotfont3';
+		src:url(/sot_fonts/font3.ttf);
+	}
+	@font-face {
+		font-family: 'Sotfont4';
+		src:url(/sot_fonts/font4.ttf);
+	}
+	span {
+		font-family: Sotfont3;
+	}
+	footer {
+		height: 40px;
+		bottom: 0;
+		position:fixed;
+		width:240px;
+		font-family: Sotfont4;
+	}
+
 	main {
 		text-align: center;
 		padding: 1em;
@@ -203,12 +232,14 @@
 	}
 	.input {
 		width: 240px;
+		font-family: Sotfont3;
 	}
 	p {
+		font-family: Sotfont2;
 		font-size: 110%;
 		margin-top: 0px;
 		margin-bottom: 5px;
-		background-color: white;
+		background-color: rgb(181, 165, 153);
 		width: 240px;
 		height: 25px;
 		border-radius: 5px;
@@ -223,6 +254,8 @@
 		width: 175px;
 		height: 30px;
 		border-radius: 5px;
+		border: 0;
+		background-color: rgb(181, 165, 153);
 	}
 
 	button {
@@ -231,12 +264,14 @@
 		margin-top: 5px;
 		width: 60px;
 		height: 30px;
+		border: 0;
 		border-radius: 5px;
+		background-color: rgb(181, 165, 153);
 	}
 
 	.win {
 		color: black;
-		background-color: greenyellow;
+		background-color: rgb(0, 255, 0);
 	}
 
 	.close {
