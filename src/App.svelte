@@ -63,13 +63,9 @@
 	<option value="Old Salts Atoll" />Í
 </datalist>
 <main>
-	<!--
 	<header>
-		<img src="Sotdle.png" alt="Sotdle" class="logo" />
-		<br />
-		<a href="https://github.com/AlexBurneikis/Sotdle">Github</a>
+		<img class="logo" src="Sotdle.png" alt="Sotdle"/>
 	</header>
--->
 	<body>
 		<img src={imgsrc} alt="island" />
 		<br />
@@ -79,9 +75,10 @@
 		<p>{guess4}</p>
 		<p>{guess5}</p>
 		<p>{guess6}</p>
+		<div class="input">
 		<input bind:value={guess} list="options" />
-		<br />
 		<button on:click={guessButton}>Guess</button>
+	</div>
 	</body>
 </main>
 
@@ -91,6 +88,16 @@
 		padding: 1em;
 		width: 240px;
 		margin: 0 auto;
+	}
+	header {
+		height: 50px;
+	}
+	.logo {
+		height: 50px;
+		width: auto;
+	}
+	.input {
+		width: 240px;
 	}
 	p {
 		margin-top: 0;
@@ -104,15 +111,16 @@
 		width: 240px;
 	}
 	input {
+		margin: 0px;
 		margin-top: 5px;
-		width: 240px;
-		height: 25px;
+		width: 175px;
+		height: 30px;
 		border-radius: 5px;
-		margin-bottom: 5px;
 	}
 	button {
-		margin-left: 90px;
-		margin-right: 90px;
+		padding: 0;
+		margin: 0px;
+		margin-top: 5px;
 		width: 60px;
 		height:30px;
 		border-radius: 5px;
