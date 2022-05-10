@@ -60,11 +60,13 @@
 	/><option value="Old Salts Atoll" />
 </datalist>
 <main>
+<!--
 	<header>
 		<img src="Sotdle.png" alt="Sotdle" class="logo" />
 		<br />
 		<a href="https://github.com/AlexBurneikis/Sotdle">Github</a>
 	</header>
+-->
 	<body>
 		<img class="img" src={imgsrc} alt="island" />
 		<input bind:value={guess} list="options" />
