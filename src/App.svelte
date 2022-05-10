@@ -57,6 +57,61 @@
 		return answer["Region"] === x["Region"];
 	}
 
+	function direction(x) {
+		var direction;
+
+		if (answer["LocationY"] - x["LocationY"] < 0) {
+			direction = "N";
+
+			if (
+				answer["LocationX"].charCodeAt(0) -
+					x["LocationX"].charCodeAt(0) >
+				0
+			) {
+				direction += "E";
+			} else if (
+				answer["LocationX"].charCodeAt(0) -
+					x["LocationX"].charCodeAt(0) <
+				0
+			) {
+				direction += "W";
+			}
+		} else if (answer["LocationY"] - x["LocationY"] > 0) {
+			direction = "S";
+
+			if (
+				answer["LocationX"].charCodeAt(0) -
+					x["LocationX"].charCodeAt(0) >
+				0
+			) {
+				direction += "E";
+			} else if (
+				answer["LocationX"].charCodeAt(0) -
+					x["LocationX"].charCodeAt(0) <
+				0
+			) {
+				direction += "W";
+			}
+		}
+		if (answer["LocationY"] === x["LocationY"]) {
+			if (
+				answer["LocationX"].charCodeAt(0) -
+					x["LocationX"].charCodeAt(0) >
+				0
+			) {
+				direction = "E";
+			} else if (
+				answer["LocationX"].charCodeAt(0) -
+					x["LocationX"].charCodeAt(0) <
+				0
+			) {
+				direction = "W";
+			}
+		}
+
+		return direction;
+	}
+
 	function guessButton() {
 		if (guessno <= 6) {
 			if (isIsland(guess)) {
@@ -67,11 +122,11 @@
 					return;
 				}
 
-				if (is_same_region) {
+				let guessIsland = getIsland(guess);
+
+				if (is_same_region(guessIsland)) {
 					gpClass[guessno - 1] = "close";
 				}
-
-				let guessIsland = getIsland(guess);
 
 				const index = Islands.indexOf(guessIsland);
 				Islands.splice(index, 1);
@@ -80,7 +135,7 @@
 				console.log(list.children[index]);
 				list.children[index].remove();
 
-				guessParagraph[guessno - 1] = guess;
+				guessParagraph[guessno - 1] = guess + " " + direction(guessIsland);
 				guessno += 1;
 			}
 		}
@@ -127,7 +182,8 @@
 		width: 240px;
 	}
 	p {
-		margin-top: 0;
+		font-size: 110%;
+		margin-top: 0px;
 		margin-bottom: 5px;
 		background-color: white;
 		width: 240px;
@@ -136,6 +192,7 @@
 	}
 	img {
 		width: 240px;
+		border-radius: 8px;
 	}
 	input {
 		margin: 0px;
@@ -144,6 +201,7 @@
 		height: 30px;
 		border-radius: 5px;
 	}
+
 	button {
 		padding: 0;
 		margin: 0px;
@@ -152,10 +210,14 @@
 		height: 30px;
 		border-radius: 5px;
 	}
+
 	.win {
-		color: rgb(77, 123, 8);
+		color: black;
+		background-color: greenyellow;
 	}
+
 	.close {
-		color: yellow;
+		color: black;
+		background-color: yellow;
 	}
 </style>
