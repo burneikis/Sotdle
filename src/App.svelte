@@ -189,7 +189,7 @@
 		</div>
 	</body>
 	<footer>
-		<h6>Alex Burneikis 2022 <a href="https://github.com/alexburneikis/sotdle">Github</a> </h6>
+		<h6>Alex Burneikis 2022 <a href="https://github.com/alexburneikis/sotdle">Github</a>, <a href="https://github.com/AlexBurneikis/Sotdle/blob/main/README.md">Help</a></h6>
 	</footer>
 </main>
 
