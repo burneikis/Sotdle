@@ -67,6 +67,8 @@
 		<p class={g6c}>{guess6}</p>
 		<br />
 		<input list="options" />
+		<br />
+		<button>Guess</button>
 	</body>
 </main>
 
@@ -81,7 +83,15 @@
 	input {
 		border-radius: 5px;
 		font-size: 12px;
-		width: 100px;
+		width: 180px;
+		height: 20px;
+		background-color: lightgrey;
+	}
+
+	button {
+		border-radius: 5px;
+		font-size: 13px;
+		width: 50px;
 		height: 20px;
 		background-color: lightgrey;
 	}
