@@ -1,4 +1,4 @@
-# Sotle
+# Sotdle
 Sea of Thieves wordle clone
 
 inspired by worldle
