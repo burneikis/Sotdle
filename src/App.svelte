@@ -1,14 +1,6 @@
 <script>
 	import { onMount } from "svelte";
-	export let guess1;
-	export let guess2;
-	export let guess3;
-	export let guess4;
-	export let guess5;
-	export let guess6;
-
 	let Islands = [];
-
 	let guess;
 	let answer;
 	let guessno;
@@ -60,7 +52,7 @@
 	/><option value="Old Salts Atoll" />
 </datalist>
 <main>
-<!--
+	<!--
 	<header>
 		<img src="Sotdle.png" alt="Sotdle" class="logo" />
 		<br />
@@ -68,7 +60,8 @@
 	</header>
 -->
 	<body>
-		<img class="img" src={imgsrc} alt="island" />
+		<img src={imgsrc} alt="island" />
+		<br />
 		<input bind:value={guess} list="options" />
 		<br />
 		<button on:click={guessButton}>Guess</button>
@@ -82,46 +75,7 @@
 		max-width: 240px;
 		margin: 0 auto;
 	}
-
-	input {
-		border-radius: 5px;
-		font-size: 12px;
-		width: 180px;
-		height: 20px;
-		background-color: lightgrey;
-	}
-
-	button {
-		border-radius: 5px;
-		font-size: 13px;
-		width: 50px;
-		height: 20px;
-		background-color: lightgrey;
-	}
-
-	.logo {
-		width: 70px;
-	}
-
-	.img {
+	img {
 		max-height: 240px;
-	}
-
-	.correct {
-		color: greenyellow;
-	}
-
-	.close {
-		color: yellow;
-	}
-
-	.wrong {
-		color: black;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
 	}
 </style>
