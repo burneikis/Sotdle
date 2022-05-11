@@ -150,6 +150,7 @@
 	}
 
 	function guessButton() {
+		guess = guess
 		if (guessno <= 6) {
 			if (isIsland(guess)) {
 				if (isWin(guess)) {
