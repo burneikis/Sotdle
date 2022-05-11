@@ -7,7 +7,7 @@
 
 	let clicked;
 	let focused;
-	let notblurred = true;
+	let blurred = false;
 
 	let guessno = 1;
 	let guess;
@@ -126,13 +126,13 @@
 	}
 
 	function blur() {
-		notblurred = false;
+		blurred = true;
 	}
 
 	function click() {
 		clicked = true;
 		if (focused) {
-			if (notblurred) {
+			if (blurred) {
 			clear();
 			focused = false;
 			return;
@@ -142,7 +142,7 @@
 	function focus() {
 		focused = true;
 		if (clicked) {
-			if (notblurred) {
+			if (blurred) {
 			clear();
 			clicked = false;
 			return;
@@ -165,6 +165,7 @@
 					guessParagraph[guessno - 1] = guess;
 					guessno = 8;
 					buttonText = "Again";
+					blurred = false;
 					return;
 				}
 
@@ -187,6 +188,7 @@
 				guessno += 1;
 				if (guessno === 7) {
 					buttonText = "Answer";
+					blurred = false;
 					return;
 				}
 				fill();
@@ -195,6 +197,7 @@
 			showAnswer();
 			buttonText = "Again";
 			guessno = 8;
+			blurred = false;
 			return;
 		} else if (guessno === 8) {
 			document.location.reload();
