@@ -133,7 +133,8 @@
 				if (isWin(guess)) {
 					gpClass[guessno - 1] = "win";
 					guessParagraph[guessno - 1] = guess;
-					guessno = 7;
+					guessno = 8;
+					buttonText = "Again"
 					return;
 				}
 
@@ -158,12 +159,19 @@
 				guessno += 1;
 				if (guessno === 7) {
 					buttonText = "Answer";
-					guessno += 62;
+					return;
 				}
 				fill();
 			}
-		} else if (guessno === 69) {
+		} 
+		else if (guessno === 7) {
 			showAnswer();
+			buttonText = "Again";
+			guessno = 8;
+			return;
+		}
+		else if (guessno === 8) {
+			document.location.reload();
 		}
 	}
 </script>
