@@ -124,7 +124,7 @@
 		guess = Islands[0]["Name"];
 	}
 	function showAnswer() {
-		alert('The answer was ' + answer.Name + '.');
+		alert("The answer was " + answer.Name + ".");
 	}
 
 	function guessButton() {
@@ -134,7 +134,7 @@
 					gpClass[guessno - 1] = "win";
 					guessParagraph[guessno - 1] = guess;
 					guessno = 8;
-					buttonText = "Again"
+					buttonText = "Again";
 					return;
 				}
 
@@ -151,10 +151,8 @@
 				console.log(list.children[index]);
 				list.children[index].remove();
 
-				guessParagraph[guessno - 1] =
-					guess + " ";
-				guessDirection[guessno - 1] =
-					direction(guessIsland);
+				guessParagraph[guessno - 1] = guess + " ";
+				guessDirection[guessno - 1] = direction(guessIsland);
 
 				guessno += 1;
 				if (guessno === 7) {
@@ -163,14 +161,12 @@
 				}
 				fill();
 			}
-		} 
-		else if (guessno === 7) {
+		} else if (guessno === 7) {
 			showAnswer();
 			buttonText = "Again";
 			guessno = 8;
 			return;
-		}
-		else if (guessno === 8) {
+		} else if (guessno === 8) {
 			document.location.reload();
 		}
 	}
@@ -185,34 +181,58 @@
 	<body>
 		<img src={imgsrc} alt="island" />
 		<br />
-		<p class={gpClass[0]}>{guessParagraph[0]}<span>{guessDirection[0]}</span></p>
-		<p class={gpClass[1]}>{guessParagraph[1]}<span>{guessDirection[1]}</span></p>
-		<p class={gpClass[2]}>{guessParagraph[2]}<span>{guessDirection[2]}</span></p>
-		<p class={gpClass[3]}>{guessParagraph[3]}<span>{guessDirection[3]}</span></p>
-		<p class={gpClass[4]}>{guessParagraph[4]}<span>{guessDirection[4]}</span></p>
-		<p class={gpClass[5]}>{guessParagraph[5]}<span>{guessDirection[5]}</span></p>
+		<p class={gpClass[0]}>
+			{guessParagraph[0]}<span>{guessDirection[0]}</span>
+		</p>
+		<p class={gpClass[1]}>
+			{guessParagraph[1]}<span>{guessDirection[1]}</span>
+		</p>
+		<p class={gpClass[2]}>
+			{guessParagraph[2]}<span>{guessDirection[2]}</span>
+		</p>
+		<p class={gpClass[3]}>
+			{guessParagraph[3]}<span>{guessDirection[3]}</span>
+		</p>
+		<p class={gpClass[4]}>
+			{guessParagraph[4]}<span>{guessDirection[4]}</span>
+		</p>
+		<p class={gpClass[5]}>
+			{guessParagraph[5]}<span>{guessDirection[5]}</span>
+		</p>
 		<div class="input">
-			<input bind:value={guess} list="options" on:focus={clear} />
-			<button on:click={guessButton}>{buttonText}</button>
+			<input bind:value={guess} list="options" on:click={clear} />
+			<button class="disable-dbl-tap-zoom" on:click={guessButton}>{buttonText}</button>
 		</div>
 	</body>
 	<footer>
-		<h6>Alex Burneikis 2022 <a href="https://github.com/alexburneikis/sotdle">Github</a>, <a href="https://github.com/AlexBurneikis/Sotdle/blob/main/README.md">Help</a></h6>
+		<h6>
+			Alex Burneikis 2022 <a
+				href="https://github.com/alexburneikis/sotdle">Github</a
+			>,
+			<a
+				href="https://github.com/AlexBurneikis/Sotdle/blob/main/README.md"
+				>Help</a
+			>
+		</h6>
 	</footer>
 </main>
 
 <style>
+	.disable-dbl-tap-zoom {
+		touch-action: manipulation;
+	}
+
 	@font-face {
-		font-family: 'Sotfont2';
+		font-family: "Sotfont2";
 		src: url(/sot_fonts/font2.ttf);
 	}
 	@font-face {
-		font-family: 'Sotfont3';
-		src:url(/sot_fonts/font3.ttf);
+		font-family: "Sotfont3";
+		src: url(/sot_fonts/font3.ttf);
 	}
 	@font-face {
-		font-family: 'Sotfont4';
-		src:url(/sot_fonts/font4.ttf);
+		font-family: "Sotfont4";
+		src: url(/sot_fonts/font4.ttf);
 	}
 	span {
 		font-family: Sotfont3;
@@ -220,8 +240,8 @@
 	footer {
 		height: 40px;
 		bottom: 0;
-		position:fixed;
-		width:240px;
+		position: fixed;
+		width: 240px;
 		font-family: Sotfont4;
 	}
 
