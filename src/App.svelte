@@ -132,7 +132,7 @@
 	function click() {
 		clicked = true;
 		if (focused) {
-			if (blurred) {
+			if (!blurred) {
 			clear();
 			focused = false;
 			return;
@@ -142,7 +142,7 @@
 	function focus() {
 		focused = true;
 		if (clicked) {
-			if (blurred) {
+			if (!blurred) {
 			clear();
 			clicked = false;
 			return;
