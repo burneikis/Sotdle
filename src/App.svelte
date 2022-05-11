@@ -248,7 +248,7 @@
 	</body>
 	<footer>
 		<h6>
-			Alex Burneikis 2022 <a
+			Alex Burneikis <a
 				href="https://github.com/alexburneikis/sotdle">Github</a
 			>,
 			<a
