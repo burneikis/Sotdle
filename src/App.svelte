@@ -133,9 +133,9 @@
 		clicked = true;
 		if (focused) {
 			if (!blurred) {
-			clear();
-			focused = false;
-			return;
+				clear();
+				focused = false;
+				return;
 			}
 		}
 	}
@@ -143,9 +143,9 @@
 		focused = true;
 		if (clicked) {
 			if (!blurred) {
-			clear();
-			clicked = false;
-			return;
+				clear();
+				clicked = false;
+				return;
 			}
 		}
 		blurred = false;
