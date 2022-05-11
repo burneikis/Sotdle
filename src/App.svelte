@@ -148,6 +148,7 @@
 			return;
 			}
 		}
+		blurred = false;
 	}
 
 	function fill() {
