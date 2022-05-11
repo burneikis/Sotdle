@@ -7,6 +7,7 @@
 
 	let clicked;
 	let focused;
+	let notblurred = true;
 
 	let guessno = 1;
 	let guess;
@@ -124,23 +125,30 @@
 		guess = "";
 	}
 
+	function blur() {
+		notblurred = false;
+	}
+
 	function click() {
 		clicked = true;
 		if (focused) {
+			if (notblurred) {
 			clear();
 			focused = false;
-			return
+			return;
+			}
 		}
 	}
 	function focus() {
 		focused = true;
 		if (clicked) {
+			if (notblurred) {
 			clear();
 			clicked = false;
-			return
+			return;
+			}
 		}
 	}
-
 
 	function fill() {
 		guess = Islands[0]["Name"];
@@ -150,7 +158,6 @@
 	}
 
 	function guessButton() {
-		guess = guess
 		if (guessno <= 6) {
 			if (isIsland(guess)) {
 				if (isWin(guess)) {
@@ -223,8 +230,16 @@
 			{guessParagraph[5]}<span>{guessDirection[5]}</span>
 		</p>
 		<div class="input">
-			<input bind:value={guess} list="options" on:focus={focus} on:click={click} />
-			<button class="disable-dbl-tap-zoom" on:click={guessButton}>{buttonText}</button>
+			<input
+				bind:value={guess}
+				list="options"
+				on:focus={focus}
+				on:blur={blur}
+				on:click={click}
+			/>
+			<button class="disable-dbl-tap-zoom" on:click={guessButton}
+				>{buttonText}</button
+			>
 		</div>
 	</body>
 	<footer>
