@@ -5,6 +5,9 @@
 	let answer;
 	let imgsrc;
 
+	let clicked;
+	let focused;
+
 	let guessno = 1;
 	let guess;
 
@@ -120,6 +123,25 @@
 	function clear() {
 		guess = "";
 	}
+
+	function click() {
+		clicked = true;
+		if (focused) {
+			clear();
+			focused = false;
+			return
+		}
+	}
+	function focus() {
+		focused = true;
+		if (clicked) {
+			clear();
+			clicked = false;
+			return
+		}
+	}
+
+
 	function fill() {
 		guess = Islands[0]["Name"];
 	}
@@ -200,7 +222,7 @@
 			{guessParagraph[5]}<span>{guessDirection[5]}</span>
 		</p>
 		<div class="input">
-			<input bind:value={guess} list="options" on:click={clear} />
+			<input bind:value={guess} list="options" on:focus={focus} on:click={click} />
 			<button class="disable-dbl-tap-zoom" on:click={guessButton}>{buttonText}</button>
 		</div>
 	</body>
