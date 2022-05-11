@@ -254,7 +254,10 @@
 			<a
 				href="https://github.com/AlexBurneikis/Sotdle/blob/main/README.md"
 				>Help</a
-			>
+			>,
+                        <a
+				href="https://daily.sotdle.xyz"
+				>Daily</a>
 		</h6>
 	</footer>
 </main>
