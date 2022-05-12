@@ -1,29 +1,25 @@
 <script>
 	import { onMount } from "svelte";
+
 	let Islands = [];
 
 	let answer;
 	let imgsrc;
-
-	let clicked;
-	let focused;
-	let blurred = false;
-
-	let guessno = 1;
+	let guessno;
 	let guess;
+	let buttonText;
 
-	let buttonText = "Guess";
-
+	let gpClass = [];
 	let guessParagraph = ["", "", "", "", "", ""];
-	let gpClass = ["", "", "", "", "", ""];
 	let guessDirection = ["", "", "", "", "", ""];
 
 	function setup() {
 		answer = Islands[Math.floor(Math.random() * Islands.length)];
 		imgsrc = answer.Image;
 		guessno = 1;
+		buttonText = "Guess";
+		fill();
 	}
-
 	function loadIslands() {
 		fetch("islands.json").then((res) => {
 			res.json().then((data) => {
@@ -36,16 +32,17 @@
 					list.appendChild(option);
 				});
 
-				fill();
-
 				setup();
 			});
 		});
 	}
-
 	onMount(async () => {
 		loadIslands();
 	});
+
+	function showAnswer() {
+		alert("The answer was " + answer.Name + ".");
+	}
 
 	function isIsland(x) {
 		if (Islands.find((i) => i.Name === x)) {
@@ -53,19 +50,15 @@
 		}
 		return false;
 	}
-
 	function getIsland(x) {
 		return Islands.find((i) => i.Name === x);
 	}
-
 	function isWin(x) {
 		return answer["Name"] === x;
 	}
-
 	function is_same_region(x) {
 		return answer["Region"] === x["Region"];
 	}
-
 	function direction(x) {
 		var direction;
 
@@ -121,14 +114,16 @@
 		return direction;
 	}
 
+	let clicked;
+	let focused;
+	let blurred = false;
+
 	function clear() {
 		guess = "";
 	}
-
 	function blur() {
 		blurred = true;
 	}
-
 	function click() {
 		clicked = true;
 		if (focused) {
@@ -150,12 +145,8 @@
 		}
 		blurred = false;
 	}
-
 	function fill() {
 		guess = Islands[0]["Name"];
-	}
-	function showAnswer() {
-		alert("The answer was " + answer.Name + ".");
 	}
 
 	function guessButton() {
@@ -248,16 +239,14 @@
 	</body>
 	<footer>
 		<h6>
-			Alex Burneikis <a
-				href="https://github.com/alexburneikis/sotdle">Github</a
+			Alex Burneikis <a href="https://github.com/alexburneikis/sotdle"
+				>Github</a
 			>,
 			<a
 				href="https://github.com/AlexBurneikis/Sotdle/blob/main/README.md"
 				>Help</a
 			>,
-                        <a
-				href="https://daily.sotdle.xyz"
-				>Daily</a>
+			<a href="https://daily.sotdle.xyz">Daily</a>
 		</h6>
 	</footer>
 </main>
