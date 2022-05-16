@@ -206,35 +206,37 @@
 	<body>
 		<img src={imgsrc} alt="island" />
 		<br />
-		<p class={gpClass[0]}>
-			{guessParagraph[0]}<span>{guessDirection[0]}</span>
-		</p>
-		<p class={gpClass[1]}>
-			{guessParagraph[1]}<span>{guessDirection[1]}</span>
-		</p>
-		<p class={gpClass[2]}>
-			{guessParagraph[2]}<span>{guessDirection[2]}</span>
-		</p>
-		<p class={gpClass[3]}>
-			{guessParagraph[3]}<span>{guessDirection[3]}</span>
-		</p>
-		<p class={gpClass[4]}>
-			{guessParagraph[4]}<span>{guessDirection[4]}</span>
-		</p>
-		<p class={gpClass[5]}>
-			{guessParagraph[5]}<span>{guessDirection[5]}</span>
-		</p>
-		<div class="input">
-			<input
-				bind:value={guess}
-				list="options"
-				on:focus={focus}
-				on:blur={blur}
-				on:click={click}
-			/>
-			<button class="disable-dbl-tap-zoom" on:click={guessButton}
-				>{buttonText}</button
-			>
+		<div class="guessSection">
+			<p class={gpClass[0]}>
+				{guessParagraph[0]}<span>{guessDirection[0]}</span>
+			</p>
+			<p class={gpClass[1]}>
+				{guessParagraph[1]}<span>{guessDirection[1]}</span>
+			</p>
+			<p class={gpClass[2]}>
+				{guessParagraph[2]}<span>{guessDirection[2]}</span>
+			</p>
+			<p class={gpClass[3]}>
+				{guessParagraph[3]}<span>{guessDirection[3]}</span>
+			</p>
+			<p class={gpClass[4]}>
+				{guessParagraph[4]}<span>{guessDirection[4]}</span>
+			</p>
+			<p class={gpClass[5]}>
+				{guessParagraph[5]}<span>{guessDirection[5]}</span>
+			</p>
+			<div class="input">
+				<input
+					bind:value={guess}
+					list="options"
+					on:focus={focus}
+					on:blur={blur}
+					on:click={click}
+				/>
+				<button class="disable-dbl-tap-zoom" on:click={guessButton}
+					>{buttonText}</button
+				>
+			</div>
 		</div>
 	</body>
 	<footer>
@@ -252,10 +254,6 @@
 </main>
 
 <style>
-	.disable-dbl-tap-zoom {
-		touch-action: manipulation;
-	}
-
 	@font-face {
 		font-family: "Sotfont2";
 		src: url(/sot_fonts/font2.ttf);
@@ -271,63 +269,88 @@
 	span {
 		font-family: Sotfont3;
 	}
+
+	main {
+		margin: 0 auto;
+
+		padding: 1em;
+		padding-top: 0;
+
+		text-align: center;
+
+		width: 95vmin;
+	}
+	header {
+		height: 8vh;
+		min-height: 30px;
+	}
+	.logo {
+		height: 8vh;
+		min-height: 30px;
+		width: auto;
+	}
 	footer {
 		height: 40px;
 		bottom: 0;
 		position: fixed;
-		width: 240px;
+		width: 70vw;
 		font-family: Sotfont4;
 	}
 
-	main {
-		text-align: center;
-		padding: 1em;
-		width: 240px;
-		margin: 0 auto;
-	}
-	header {
-		height: 50px;
-	}
-	.logo {
-		height: 50px;
-		width: auto;
-	}
-	.input {
-		width: 240px;
-		font-family: Sotfont3;
-	}
 	p {
 		font-family: Sotfont2;
 		font-size: 110%;
+
 		margin-top: 0px;
 		margin-bottom: 5px;
-		background-color: rgb(181, 165, 153);
-		width: 240px;
+
+		width: 100%;
 		height: 25px;
+
 		border-radius: 5px;
+
+		background-color: rgb(181, 165, 153);
 	}
+
 	img {
-		width: 240px;
+		width: 50vmin;
 		border-radius: 8px;
+	}
+
+	.guessSection {
+		margin: auto;
+		height: 30%;
+		width: 50vmin;
+	}
+
+	.input {
+		width: 100%;
+		font-family: Sotfont3;
 	}
 	input {
 		margin: 0px;
 		margin-top: 5px;
-		width: 175px;
+
+		padding-left: 8px;
+
+		width: 70%;
 		height: 30px;
+
 		border-radius: 5px;
 		border: 0;
+
 		background-color: rgb(181, 165, 153);
 	}
-
 	button {
-		padding: 0;
 		margin: 0px;
 		margin-top: 5px;
-		width: 60px;
+
+		width: 25%;
 		height: 30px;
+
 		border: 0;
 		border-radius: 5px;
+
 		background-color: rgb(181, 165, 153);
 	}
 
@@ -335,9 +358,12 @@
 		color: black;
 		background-color: rgb(0, 255, 0);
 	}
-
 	.close {
 		color: black;
 		background-color: yellow;
+	}
+
+	.disable-dbl-tap-zoom {
+		touch-action: manipulation;
 	}
 </style>
