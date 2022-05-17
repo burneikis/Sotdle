@@ -203,41 +203,36 @@
 	<header>
 		<img class="logo" src="Sotdle.png" alt="Sotdle" />
 	</header>
+	<img src={imgsrc} alt="island" />
 	<body>
-		<img src={imgsrc} alt="island" />
-		<br />
-		<div class="guessSection">
-			<p class={gpClass[0]}>
-				{guessParagraph[0]}<span>{guessDirection[0]}</span>
-			</p>
-			<p class={gpClass[1]}>
-				{guessParagraph[1]}<span>{guessDirection[1]}</span>
-			</p>
-			<p class={gpClass[2]}>
-				{guessParagraph[2]}<span>{guessDirection[2]}</span>
-			</p>
-			<p class={gpClass[3]}>
-				{guessParagraph[3]}<span>{guessDirection[3]}</span>
-			</p>
-			<p class={gpClass[4]}>
-				{guessParagraph[4]}<span>{guessDirection[4]}</span>
-			</p>
-			<p class={gpClass[5]}>
-				{guessParagraph[5]}<span>{guessDirection[5]}</span>
-			</p>
-			<div class="input">
-				<input
-					bind:value={guess}
-					list="options"
-					on:focus={focus}
-					on:blur={blur}
-					on:click={click}
-				/>
-				<button class="disable-dbl-tap-zoom" on:click={guessButton}
-					>{buttonText}</button
-				>
-			</div>
-		</div>
+		<p class={gpClass[0]}>
+			{guessParagraph[0]}<span>{guessDirection[0]}</span>
+		</p>
+		<p class={gpClass[1]}>
+			{guessParagraph[1]}<span>{guessDirection[1]}</span>
+		</p>
+		<p class={gpClass[2]}>
+			{guessParagraph[2]}<span>{guessDirection[2]}</span>
+		</p>
+		<p class={gpClass[3]}>
+			{guessParagraph[3]}<span>{guessDirection[3]}</span>
+		</p>
+		<p class={gpClass[4]}>
+			{guessParagraph[4]}<span>{guessDirection[4]}</span>
+		</p>
+		<p class={gpClass[5]}>
+			{guessParagraph[5]}<span>{guessDirection[5]}</span>
+		</p>
+		<input
+			bind:value={guess}
+			list="options"
+			on:focus={focus}
+			on:blur={blur}
+			on:click={click}
+		/>
+		<button class="disable-dbl-tap-zoom" on:click={guessButton}
+			>{buttonText}</button
+		>
 	</body>
 	<footer>
 		<h6>
@@ -278,11 +273,7 @@
 
 		text-align: center;
 
-		width: 95vmin;
-	}
-	header {
-		height: 8vh;
-		min-height: 30px;
+		
 	}
 	.logo {
 		height: 8vh;
@@ -290,22 +281,27 @@
 		width: auto;
 	}
 	footer {
-		height: 40px;
-		bottom: 0;
-		position: fixed;
+		margin: auto;
+		padding-top: 4vh;
+		height: 20px;
 		width: 70vw;
 		font-family: Sotfont4;
 	}
-
+	body {
+		margin-top: 2px;
+		padding: 0;
+		text-align: center;
+		height: 20vh;
+	}
 	p {
 		font-family: Sotfont2;
-		font-size: 110%;
+		font-size: 1.5vh;
 
-		margin-top: 0px;
-		margin-bottom: 5px;
+		margin: auto;
+		margin-bottom: 2px;
 
-		width: 100%;
-		height: 25px;
+		width: 60vh;
+		height: 12.5%;
 
 		border-radius: 5px;
 
@@ -313,45 +309,35 @@
 	}
 
 	img {
-		width: 50vmin;
+		height: 60vh;
+		display: block;
+		margin: auto;
 		border-radius: 8px;
 	}
 
-	.guessSection {
-		margin: auto;
-		height: 30%;
-		width: 50vmin;
-	}
-
-	.input {
-		width: 100%;
-		font-family: Sotfont3;
-	}
 	input {
-		margin: 0px;
-		margin-top: 5px;
-
-		padding-left: 8px;
-
-		width: 70%;
-		height: 30px;
-
+		vertical-align: top;
+		padding-left: 5px;
+		border-radius: 5px;
+		height: 18%;
+		margin: 0;
+		width: 50vh;
+		font-size: 2vh;
 		border-radius: 5px;
 		border: 0;
-
+		font-family: Sotfont3;
 		background-color: rgb(181, 165, 153);
 	}
 	button {
-		margin: 0px;
-		margin-top: 5px;
-
-		width: 25%;
-		height: 30px;
-
-		border: 0;
+		vertical-align: top;
 		border-radius: 5px;
-
+		height: 18%;
+		width: 9.5vh;
+		font-size: 2vh;
+		padding: 0;
+		border: 0;
 		background-color: rgb(181, 165, 153);
+		font-family: Sotfont3;
 	}
 
 	.win {
