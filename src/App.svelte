@@ -304,7 +304,7 @@
 	}
 
 	img {
-		height: calc(69vmin - env(safe-area-inset-bottom));
+		height: calc(70vmin - env(safe-area-inset-bottom));
 		display: block;
 		margin: auto;
 		border-radius: 8px;
