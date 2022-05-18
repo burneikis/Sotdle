@@ -202,6 +202,16 @@
 <main>
 	<header>
 		<img class="logo" src="Sotdle.png" alt="Sotdle" />
+		<h6>
+			Alex Burneikis <a href="https://github.com/alexburneikis/sotdle"
+				>Github</a
+			>,
+			<a
+				href="https://github.com/AlexBurneikis/Sotdle/blob/main/README.md"
+				>Help</a
+			>,
+			<a href="https://daily.sotdle.xyz">Daily</a>
+		</h6>
 	</header>
 	<img src={imgsrc} alt="island" />
 	<body>
@@ -234,18 +244,6 @@
 			>{buttonText}</button
 		>
 	</body>
-	<footer>
-		<h6>
-			Alex Burneikis <a href="https://github.com/alexburneikis/sotdle"
-				>Github</a
-			>,
-			<a
-				href="https://github.com/AlexBurneikis/Sotdle/blob/main/README.md"
-				>Help</a
-			>,
-			<a href="https://daily.sotdle.xyz">Daily</a>
-		</h6>
-	</footer>
 </main>
 
 <style>
@@ -274,20 +272,14 @@
 		text-align: center;
 	}
 	.logo {
-		height: calc(8vh - env(safe-area-inset-bottom));
+		height: calc(6vh - env(safe-area-inset-bottom));
 		min-height: 30px;
 		width: auto;
 		margin: auto;
 	}
 	h6 {
 		margin: 0;
-	}
-	footer {
-		position: absolute;
-		bottom: 0;
 		font-family: Sotfont4;
-		text-align: center;
-	
 	}
 	body {
 		margin-top: 2px;
