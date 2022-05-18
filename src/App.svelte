@@ -279,6 +279,7 @@
 		height: calc(8vh - env(safe-area-inset-bottom));
 		min-height: 30px;
 		width: auto;
+		margin: auto;
 	}
 	footer {
 		margin: auto;
@@ -321,7 +322,7 @@
 		border-radius: 5px;
 		height: 18%;
 		margin: 0;
-		width: calc(40vh - env(safe-area-inset-bottom));
+		width: calc(38vh - env(safe-area-inset-bottom));
 		font-size: 2vh;
 		border-radius: 5px;
 		border: 0;
