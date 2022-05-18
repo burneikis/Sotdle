@@ -125,6 +125,11 @@
 		blurred = true;
 	}
 	function click() {
+		// fix autoscroll
+		var el = document.getElementById("input");
+		var scrollTop = document.body.scrollTop;
+		el.focus();
+		document.body.scrollTop = scrollTop;
 		clicked = true;
 		if (focused) {
 			if (!blurred) {
@@ -234,6 +239,7 @@
 			{guessParagraph[5]}<span>{guessDirection[5]}</span>
 		</p>
 		<input
+			id="input"
 			bind:value={guess}
 			list="options"
 			on:focus={focus}
