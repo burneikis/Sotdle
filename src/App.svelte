@@ -317,7 +317,7 @@
 		height: 16%;
 		margin: 0;
 		width: calc(44vmin - env(safe-area-inset-bottom));
-		font-size: 2.5vmin;
+		font-size: 2.4vmin;
 		border-radius: 5px;
 		border: 0;
 		font-family: Sotfont3;
