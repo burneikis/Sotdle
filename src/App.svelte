@@ -301,7 +301,7 @@
 		margin: auto;
 		margin-bottom: 2px;
 
-		width: calc(50vh - env(safe-area-inset-bottom));
+		width: calc(50vmin - env(safe-area-inset-bottom));
 		height: 12.5%;
 
 		border-radius: 5px;
@@ -310,7 +310,7 @@
 	}
 
 	img {
-		height: calc(60vh - env(safe-area-inset-bottom));
+		height: calc(60vmin - env(safe-area-inset-bottom));
 		display: block;
 		margin: auto;
 		border-radius: 8px;
@@ -322,19 +322,20 @@
 		border-radius: 5px;
 		height: 18%;
 		margin: 0;
-		width: calc(38vh - env(safe-area-inset-bottom));
-		font-size: 2vh;
+		width: calc(38vmin - env(safe-area-inset-bottom));
+		font-size: 2.2vmin;
 		border-radius: 5px;
 		border: 0;
 		font-family: Sotfont3;
 		background-color: rgb(181, 165, 153);
 	}
 	button {
+		display: inline;
 		vertical-align: top;
 		border-radius: 5px;
 		height: 18%;
-		width: calc(8vh - env(safe-area-inset-bottom));
-		font-size: 2vh;
+		width: calc(10vmin - env(safe-area-inset-bottom));
+		font-size: 2.2vmin;
 		padding: 0;
 		border: 0;
 		background-color: rgb(181, 165, 153);
