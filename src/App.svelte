@@ -290,7 +290,7 @@
 	}
 	p {
 		font-family: Sotfont2;
-		font-size: 1.5vh;
+		font-size: calc(1.5vh - env(safe-area-inset-bottom));
 
 		margin: auto;
 		margin-bottom: 2px;
@@ -317,8 +317,8 @@
 		border-radius: 5px;
 		height: 16%;
 		margin: 0;
-		width: calc(44vmin - env(safe-area-inset-bottom));
-		font-size: 2.4vmin;
+		width: calc(45vmin - env(safe-area-inset-bottom));
+		font-size: calc(2.4vmin - env(safe-area-inset-bottom));
 		border-radius: 5px;
 		border: 0;
 		font-family: Sotfont3;
@@ -331,7 +331,7 @@
 		border-radius: 5px;
 		height: 16%;
 		width: calc(14vmin - env(safe-area-inset-bottom));
-		font-size: 2.5vmin;
+		font-size: calc(2.5vmin - env(safe-area-inset-bottom));
 		padding: 0;
 		border: 0;
 		background-color: rgb(181, 165, 153);
