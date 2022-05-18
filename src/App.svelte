@@ -134,10 +134,7 @@
 			}
 		}
 		setTimeout(function () {
-			var el = document.getElementById("input");
-			var scrollTop = document.body.scrollTop; // save position
-			el.focus();
-			document.body.scrollTop = scrollTop;
+			window.scrollTo(0 , 0)
 		}, 0);
 	}
 	function focus() {
@@ -151,10 +148,7 @@
 		}
 		blurred = false;
 		setTimeout(function () {
-			var el = document.getElementById("input");
-			var scrollTop = document.body.scrollTop; // save position
-			el.focus();
-			document.body.scrollTop = scrollTop;
+			window.scrollTo(0 , 0)
 		}, 0);
 	}
 	function fill() {
