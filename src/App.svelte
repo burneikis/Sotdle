@@ -134,7 +134,9 @@
 			}
 		}
 		setTimeout(function () {
-			var scrollTop = document.body.scrollTop;
+			var el = document.getElementById("input");
+			var scrollTop = document.body.scrollTop; // save position
+			el.focus();
 			document.body.scrollTop = scrollTop;
 		}, 0);
 	}
@@ -149,7 +151,9 @@
 		}
 		blurred = false;
 		setTimeout(function () {
-			var scrollTop = document.body.scrollTop;
+			var el = document.getElementById("input");
+			var scrollTop = document.body.scrollTop; // save position
+			el.focus();
 			document.body.scrollTop = scrollTop;
 		}, 0);
 	}
