@@ -125,11 +125,6 @@
 		blurred = true;
 	}
 	function click() {
-		// fix autoscroll
-		var el = document.getElementById("input");
-		var scrollTop = document.body.scrollTop;
-		el.focus();
-		document.body.scrollTop = scrollTop;
 		clicked = true;
 		if (focused) {
 			if (!blurred) {
@@ -140,6 +135,12 @@
 		}
 	}
 	function focus() {
+		// fix autoscroll
+		var el = document.getElementById("input");
+		var scrollTop = document.body.scrollTop;
+		el.focus();
+		document.body.scrollTop = scrollTop;
+		clicked = true;
 		focused = true;
 		if (clicked) {
 			if (!blurred) {
