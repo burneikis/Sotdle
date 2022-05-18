@@ -266,7 +266,7 @@
 	main {
 		margin: 0 auto;
 
-		padding: 1em;
+		padding: 0;
 		padding-top: 0;
 
 		text-align: center;
@@ -303,7 +303,7 @@
 	}
 
 	img {
-		height: calc(70vmin - env(safe-area-inset-bottom));
+		height: calc(69vmin - env(safe-area-inset-bottom));
 		display: block;
 		margin: auto;
 		border-radius: 8px;
@@ -311,6 +311,7 @@
 
 	input {
 		vertical-align: top;
+		padding: 0;
 		padding-left: 5px;
 		border-radius: 5px;
 		height: 18%;
