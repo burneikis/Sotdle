@@ -272,8 +272,6 @@
 		padding-top: 0;
 
 		text-align: center;
-
-		
 	}
 	.logo {
 		height: calc(8vh - env(safe-area-inset-bottom));
@@ -281,12 +279,15 @@
 		width: auto;
 		margin: auto;
 	}
+	h6 {
+		margin: 0;
+	}
 	footer {
-		margin: auto;
-		padding-top: 4vh;
-		height: 20px;
-		width: 70vw;
+		position: absolute;
+		bottom: 0;
 		font-family: Sotfont4;
+		text-align: center;
+	
 	}
 	body {
 		margin-top: 2px;
@@ -310,7 +311,7 @@
 	}
 
 	img {
-		height: calc(60vmin - env(safe-area-inset-bottom));
+		height: calc(70vmin - env(safe-area-inset-bottom));
 		display: block;
 		margin: auto;
 		border-radius: 8px;
