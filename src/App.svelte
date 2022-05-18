@@ -125,10 +125,6 @@
 		blurred = true;
 	}
 	function click() {
-		var el = document.getElementById("input");
-		var scrollTop = document.body.scrollTop;
-		el.focus();
-		document.body.scrollTop = scrollTop;
 		clicked = true;
 		if (focused) {
 			if (!blurred) {
@@ -139,10 +135,6 @@
 		}
 	}
 	function focus() {
-		var el = document.getElementById("input");
-		var scrollTop = document.body.scrollTop;
-		el.focus();
-		document.body.scrollTop = scrollTop;
 		focused = true;
 		if (clicked) {
 			if (!blurred) {
@@ -223,6 +215,17 @@
 	</header>
 	<img src={imgsrc} alt="island" />
 	<body>
+		<input
+			id="input"
+			bind:value={guess}
+			list="options"
+			on:focus={focus}
+			on:blur={blur}
+			on:click={click}
+		/>
+		<button class="disable-dbl-tap-zoom" on:click={guessButton}
+			>{buttonText}</button
+		>
 		<p class={gpClass[0]}>
 			{guessParagraph[0]}<span>{guessDirection[0]}</span>
 		</p>
@@ -241,17 +244,7 @@
 		<p class={gpClass[5]}>
 			{guessParagraph[5]}<span>{guessDirection[5]}</span>
 		</p>
-		<input
-			id="input"
-			bind:value={guess}
-			list="options"
-			on:focus={focus}
-			on:blur={blur}
-			on:click={click}
-		/>
-		<button class="disable-dbl-tap-zoom" on:click={guessButton}
-			>{buttonText}</button
-		>
+		
 	</body>
 </main>
 
@@ -333,6 +326,7 @@
 		background-color: rgb(181, 165, 153);
 	}
 	button {
+		margin-bottom: 2px;
 		display: inline;
 		vertical-align: top;
 		border-radius: 5px;
