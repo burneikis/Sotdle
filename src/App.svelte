@@ -300,7 +300,7 @@
 		margin: auto;
 		margin-bottom: 2px;
 
-		width: calc(60vh - env(safe-area-inset-bottom));
+		width: calc(50vh - env(safe-area-inset-bottom));
 		height: 12.5%;
 
 		border-radius: 5px;
@@ -321,7 +321,7 @@
 		border-radius: 5px;
 		height: 18%;
 		margin: 0;
-		width: calc(50vh - env(safe-area-inset-bottom));
+		width: calc(40vh - env(safe-area-inset-bottom));
 		font-size: 2vh;
 		border-radius: 5px;
 		border: 0;
@@ -332,7 +332,7 @@
 		vertical-align: top;
 		border-radius: 5px;
 		height: 18%;
-		width: calc(9.5vh - env(safe-area-inset-bottom));
+		width: calc(8vh - env(safe-area-inset-bottom));
 		font-size: 2vh;
 		padding: 0;
 		border: 0;
