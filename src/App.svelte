@@ -134,7 +134,8 @@
 			}
 		}
 		setTimeout(function () {
-			window.scrollTo(x, y);
+			var scrollTop = document.body.scrollTop;
+			document.body.scrollTop = scrollTop;
 		}, 0);
 	}
 	function focus() {
@@ -148,7 +149,8 @@
 		}
 		blurred = false;
 		setTimeout(function () {
-			window.scrollTo(x, y);
+			var scrollTop = document.body.scrollTop;
+			document.body.scrollTop = scrollTop;
 		}, 0);
 	}
 	function fill() {
