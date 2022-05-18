@@ -294,7 +294,7 @@
 		margin: auto;
 		margin-bottom: 2px;
 
-		width: calc(50vmin - env(safe-area-inset-bottom));
+		width: calc(60vmin - env(safe-area-inset-bottom));
 		height: 12.5%;
 
 		border-radius: 5px;
@@ -314,10 +314,10 @@
 		padding: 0;
 		padding-left: 5px;
 		border-radius: 5px;
-		height: 18%;
+		height: 16%;
 		margin: 0;
-		width: calc(38vmin - env(safe-area-inset-bottom));
-		font-size: 2.2vmin;
+		width: calc(44vmin - env(safe-area-inset-bottom));
+		font-size: 3vmin;
 		border-radius: 5px;
 		border: 0;
 		font-family: Sotfont3;
@@ -327,9 +327,9 @@
 		display: inline;
 		vertical-align: top;
 		border-radius: 5px;
-		height: 18%;
-		width: calc(10vmin - env(safe-area-inset-bottom));
-		font-size: 2.2vmin;
+		height: 16%;
+		width: calc(14vmin - env(safe-area-inset-bottom));
+		font-size: 3vmin;
 		padding: 0;
 		border: 0;
 		background-color: rgb(181, 165, 153);
