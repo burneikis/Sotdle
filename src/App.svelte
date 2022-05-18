@@ -317,7 +317,7 @@
 		height: 16%;
 		margin: 0;
 		width: calc(44vmin - env(safe-area-inset-bottom));
-		font-size: 3vmin;
+		font-size: 2.5vmin;
 		border-radius: 5px;
 		border: 0;
 		font-family: Sotfont3;
@@ -329,7 +329,7 @@
 		border-radius: 5px;
 		height: 16%;
 		width: calc(14vmin - env(safe-area-inset-bottom));
-		font-size: 3vmin;
+		font-size: 2.5vmin;
 		padding: 0;
 		border: 0;
 		background-color: rgb(181, 165, 153);
