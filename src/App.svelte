@@ -133,6 +133,9 @@
 				return;
 			}
 		}
+		setTimeout(function () {
+			window.scrollTo(x, y);
+		}, 0);
 	}
 	function focus() {
 		focused = true;
@@ -144,6 +147,9 @@
 			}
 		}
 		blurred = false;
+		setTimeout(function () {
+			window.scrollTo(x, y);
+		}, 0);
 	}
 	function fill() {
 		guess = Islands[0]["Name"];
@@ -244,7 +250,6 @@
 		<p class={gpClass[5]}>
 			{guessParagraph[5]}<span>{guessDirection[5]}</span>
 		</p>
-		
 	</body>
 </main>
 
