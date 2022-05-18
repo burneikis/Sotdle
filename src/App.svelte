@@ -132,13 +132,13 @@
 				focused = false;
 				setTimeout(function () {
 					window.scrollTo(0, 0);
-				}, 5);
+				}, 10);
 				return;
 			}
 		}
 		setTimeout(function () {
 			window.scrollTo(0, 0);
-		}, 5);
+		}, 10);
 	}
 	function focus() {
 		focused = true;
@@ -148,14 +148,14 @@
 				clicked = false;
 				setTimeout(function () {
 					window.scrollTo(0, 0);
-				}, 5);
+				}, 10);
 				return;
 			}
 		}
 		blurred = false;
 		setTimeout(function () {
 			window.scrollTo(0, 0);
-		}, 5);
+		}, 10);
 	}
 	function fill() {
 		guess = Islands[0]["Name"];
@@ -337,7 +337,6 @@
 		background-color: rgb(181, 165, 153);
 	}
 	button {
-		margin-bottom: 2px;
 		display: inline;
 		vertical-align: top;
 		border-radius: 5px;
