@@ -10,6 +10,7 @@
   let { islands, disabled = false, onSubmit }: Props = $props();
 
   let inputValue = $state('');
+  let selectedIsland: Island | null = $state(null);
   let isOpen = $state(false);
   let highlightedIndex = $state(-1);
   let inputEl: HTMLInputElement | null = $state(null);
@@ -23,29 +24,46 @@
       : islands
   );
 
+  // Check if current input matches an island exactly
+  const matchedIsland = $derived(
+    islands.find((i) => i.name.toLowerCase() === inputValue.toLowerCase())
+  );
+
   function handleInput() {
     isOpen = true;
-    highlightedIndex = -1;
+    highlightedIndex = filteredIslands.length > 0 ? 0 : -1;
+    selectedIsland = null; // Clear selection when typing
   }
 
   function handleFocus() {
     isOpen = true;
+    if (filteredIslands.length > 0 && highlightedIndex === -1) {
+      highlightedIndex = 0;
+    }
   }
 
-  function handleBlur(e: FocusEvent) {
+  function handleBlur() {
     // Delay to allow click on dropdown item
     setTimeout(() => {
-      if (!listEl?.contains(document.activeElement)) {
-        isOpen = false;
-      }
+      isOpen = false;
     }, 150);
   }
 
   function handleKeydown(e: KeyboardEvent) {
-    if (!isOpen) {
-      if (e.key === 'ArrowDown' || e.key === 'Enter') {
+    if (!isOpen && filteredIslands.length > 0) {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
         isOpen = true;
+        highlightedIndex = 0;
         e.preventDefault();
+        return;
+      }
+    }
+
+    if (!isOpen) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        submitGuess();
+        return;
       }
       return;
     }
@@ -68,13 +86,15 @@
         e.preventDefault();
         if (highlightedIndex >= 0 && filteredIslands[highlightedIndex]) {
           selectIsland(filteredIslands[highlightedIndex]);
-        } else if (filteredIslands.length === 1) {
-          selectIsland(filteredIslands[0]);
+        }
+        break;
+      case 'Tab':
+        if (highlightedIndex >= 0 && filteredIslands[highlightedIndex]) {
+          selectIsland(filteredIslands[highlightedIndex]);
         }
         break;
       case 'Escape':
         isOpen = false;
-        highlightedIndex = -1;
         break;
     }
   }
@@ -87,21 +107,35 @@
   }
 
   function selectIsland(island: Island) {
-    inputValue = '';
+    inputValue = island.name;
+    selectedIsland = island;
     isOpen = false;
     highlightedIndex = -1;
-    onSubmit(island);
     inputEl?.focus();
+  }
+
+  function submitGuess() {
+    const toSubmit = selectedIsland || matchedIsland;
+    if (toSubmit) {
+      onSubmit(toSubmit);
+      inputValue = '';
+      selectedIsland = null;
+      inputEl?.focus();
+    }
   }
 
   function handleItemClick(island: Island) {
     selectIsland(island);
   }
 
-  // Auto-select first match when opening
+  // Update highlighted index when filtered list changes
   $effect(() => {
-    if (isOpen && filteredIslands.length > 0 && highlightedIndex === -1) {
-      highlightedIndex = 0;
+    if (isOpen && filteredIslands.length > 0) {
+      if (highlightedIndex >= filteredIslands.length) {
+        highlightedIndex = filteredIslands.length - 1;
+      } else if (highlightedIndex < 0) {
+        highlightedIndex = 0;
+      }
     }
   });
 </script>
@@ -131,14 +165,8 @@
     <button
       type="button"
       class="guess-button"
-      disabled={disabled || filteredIslands.length === 0}
-      onclick={() => {
-        if (highlightedIndex >= 0 && filteredIslands[highlightedIndex]) {
-          selectIsland(filteredIslands[highlightedIndex]);
-        } else if (filteredIslands.length === 1) {
-          selectIsland(filteredIslands[0]);
-        }
-      }}
+      disabled={disabled || (!selectedIsland && !matchedIsland)}
+      onclick={submitGuess}
     >
       Guess
     </button>
