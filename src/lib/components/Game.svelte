@@ -31,7 +31,41 @@
       }
     }
   }
+
+  function handleKeydown(e: KeyboardEvent) {
+    // Don't handle if typing in input
+    if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+      return;
+    }
+
+    switch (e.key.toLowerCase()) {
+      case 'e':
+      case 'm':
+        // Toggle easy mode map
+        if (!isStatsOpen) {
+          isMapOpen = !isMapOpen;
+        }
+        break;
+      case 'escape':
+        // Close any open modal
+        if (isMapOpen) {
+          isMapOpen = false;
+        } else if (isStatsOpen) {
+          isStatsOpen = false;
+        }
+        break;
+      case 'n':
+      case 'enter':
+        // Next island in infinite mode when game is over
+        if (gameStore.mode === 'infinite' && gameStore.isGameOver && !isMapOpen && !isStatsOpen) {
+          gameStore.nextIsland();
+        }
+        break;
+    }
+  }
 </script>
+
+<svelte:window onkeydown={handleKeydown} />
 
 <div class="game">
   <Header onStatsClick={() => (isStatsOpen = true)} />
