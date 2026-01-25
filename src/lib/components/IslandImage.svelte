@@ -67,8 +67,17 @@
     width: auto;
     height: auto;
     object-fit: contain;
-    border-radius: var(--radius-md);
     display: block;
+
+    /* Themed wooden frame border */
+    border: 4px solid rgb(101, 78, 55);      /* Dark wood inner border */
+    outline: 3px solid rgb(139, 109, 76);    /* Medium wood outline */
+    outline-offset: 0;
+    border-radius: var(--radius-md);
+    box-shadow:
+      0 0 0 6px rgb(72, 54, 36),             /* Outer dark wood frame */
+      0 4px 8px rgba(0, 0, 0, 0.4),          /* Drop shadow for depth */
+      inset 0 0 10px rgba(0, 0, 0, 0.2);     /* Inner shadow for inset effect */
   }
 
   .island-reveal {
