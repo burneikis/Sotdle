@@ -112,9 +112,7 @@
         />
       {:else}
         <div class="game-over">
-          {#if gameStore.gameStatus === 'won'}
-            <p class="result-text win">You got it in {gameStore.guesses.length}!</p>
-          {:else}
+          {#if gameStore.gameStatus === 'lost'}
             <p class="result-text lose">
               The answer was <strong>{gameStore.targetIsland.name}</strong>
             </p>
