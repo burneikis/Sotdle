@@ -34,22 +34,25 @@
 <style>
   .island-image-container {
     position: relative;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    max-width: 70vmin;
-    margin: 0 auto;
   }
 
   .easy-mode-button {
     position: absolute;
-    top: var(--spacing-sm);
-    left: var(--spacing-sm);
+    top: var(--spacing-xs);
+    left: var(--spacing-xs);
     padding: var(--spacing-xs) var(--spacing-sm);
     border: none;
     border-radius: var(--radius-sm);
     background-color: var(--color-surface);
     color: var(--color-text);
     font-family: var(--font-text);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     z-index: 1;
     transition: background-color var(--transition-fast);
   }
@@ -59,8 +62,11 @@
   }
 
   .island-image {
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
     height: auto;
+    object-fit: contain;
     border-radius: var(--radius-md);
     display: block;
   }
@@ -68,16 +74,17 @@
   .island-reveal {
     position: absolute;
     bottom: 0;
-    left: 0;
-    right: 0;
-    padding: var(--spacing-md);
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: var(--radius-sm);
   }
 
   .island-name {
     font-family: var(--font-display);
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: white;
+    white-space: nowrap;
   }
 </style>

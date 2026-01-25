@@ -16,18 +16,19 @@
   function handleGuess(island: Island) {
     const guess = gameStore.submitGuess(island);
 
-    if (guess?.status === 'correct') {
-      statisticsStore.recordWin(gameStore.guesses.length, gameStore.puzzleDate);
-      // Show stats after a short delay
-      setTimeout(() => {
-        isStatsOpen = true;
-      }, 1500);
-    } else if (gameStore.gameStatus === 'lost') {
-      statisticsStore.recordLoss(gameStore.puzzleDate);
-      // Show stats after a short delay
-      setTimeout(() => {
-        isStatsOpen = true;
-      }, 1500);
+    // Only track stats for daily mode
+    if (gameStore.mode === 'daily') {
+      if (guess?.status === 'correct') {
+        statisticsStore.recordWin(gameStore.guesses.length, gameStore.puzzleDate);
+        setTimeout(() => {
+          isStatsOpen = true;
+        }, 1500);
+      } else if (gameStore.gameStatus === 'lost') {
+        statisticsStore.recordLoss(gameStore.puzzleDate);
+        setTimeout(() => {
+          isStatsOpen = true;
+        }, 1500);
+      }
     }
   }
 </script>
@@ -36,8 +37,31 @@
   <Header onStatsClick={() => (isStatsOpen = true)} />
 
   <main class="game-main">
+    <div class="mode-toggle">
+      <button
+        type="button"
+        class="mode-button"
+        class:active={gameStore.mode === 'daily'}
+        onclick={() => gameStore.setMode('daily')}
+      >
+        Daily
+      </button>
+      <button
+        type="button"
+        class="mode-button"
+        class:active={gameStore.mode === 'infinite'}
+        onclick={() => gameStore.setMode('infinite')}
+      >
+        Infinite
+      </button>
+    </div>
+
     <div class="puzzle-info">
-      <span class="puzzle-number">Puzzle #{gameStore.puzzleNumber}</span>
+      {#if gameStore.mode === 'daily'}
+        <span class="puzzle-number">Puzzle #{gameStore.puzzleNumber}</span>
+      {:else}
+        <span class="puzzle-number">Infinite Mode</span>
+      {/if}
     </div>
 
     <IslandImage
@@ -61,11 +85,23 @@
               The answer was <strong>{gameStore.targetIsland.name}</strong>
             </p>
           {/if}
-          <ShareButton
-            puzzleNumber={gameStore.puzzleNumber}
-            guesses={gameStore.guesses}
-            gameWon={gameStore.gameStatus === 'won'}
-          />
+          <div class="game-over-buttons">
+            {#if gameStore.mode === 'daily'}
+              <ShareButton
+                puzzleNumber={gameStore.puzzleNumber}
+                guesses={gameStore.guesses}
+                gameWon={gameStore.gameStatus === 'won'}
+              />
+            {:else}
+              <button
+                type="button"
+                class="next-button"
+                onclick={() => gameStore.nextIsland()}
+              >
+                Next Island
+              </button>
+            {/if}
+          </div>
         </div>
       {/if}
 
@@ -79,9 +115,11 @@
 
 <style>
   .game {
-    min-height: 100vh;
+    height: 100vh;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
 
   .game-main {
@@ -89,17 +127,50 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: var(--spacing-sm) var(--spacing-md);
-    gap: var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-md);
+    gap: var(--spacing-xs);
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .mode-toggle {
+    display: flex;
+    gap: 2px;
+    background-color: var(--color-surface);
+    border-radius: var(--radius-sm);
+    padding: 2px;
+    flex-shrink: 0;
+  }
+
+  .mode-button {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: none;
+    border-radius: var(--radius-sm);
+    background-color: transparent;
+    color: var(--color-text-muted);
+    font-family: var(--font-text);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .mode-button.active {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  .mode-button:hover:not(.active) {
+    color: var(--color-text);
   }
 
   .puzzle-info {
     text-align: center;
+    flex-shrink: 0;
   }
 
   .puzzle-number {
     font-family: var(--font-body);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--color-text-muted);
   }
 
@@ -107,22 +178,28 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
     width: 100%;
     max-width: 400px;
+    flex-shrink: 0;
   }
 
   .game-over {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
     text-align: center;
+  }
+
+  .game-over-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
   }
 
   .result-text {
     font-family: var(--font-display);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .result-text.win {
@@ -135,5 +212,21 @@
 
   .result-text strong {
     color: var(--color-close);
+  }
+
+  .next-button {
+    padding: var(--spacing-xs) var(--spacing-md);
+    border: none;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-correct);
+    color: black;
+    font-family: var(--font-text);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: opacity var(--transition-fast);
+  }
+
+  .next-button:hover {
+    opacity: 0.9;
   }
 </style>

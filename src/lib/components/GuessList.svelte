@@ -24,7 +24,7 @@
   .guess-list {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xs);
+    gap: 2px;
     width: 100%;
     max-width: 400px;
   }

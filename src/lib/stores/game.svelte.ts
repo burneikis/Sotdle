@@ -10,12 +10,15 @@ import {
 
 const MAX_GUESSES = 6;
 
+export type GameMode = 'daily' | 'infinite';
+
 class GameStore {
   targetIsland: Island = $state(islands[0]);
   guesses: Guess[] = $state([]);
   gameStatus: GameStatus = $state('playing');
   puzzleNumber: number = $state(0);
   puzzleDate: string = $state('');
+  mode: GameMode = $state('daily');
 
   remainingGuesses = $derived(MAX_GUESSES - this.guesses.length);
   isGameOver = $derived(this.gameStatus !== 'playing');
@@ -34,6 +37,7 @@ class GameStore {
     this.puzzleNumber = puzzleNumber;
     this.puzzleDate = puzzleDate;
     this.targetIsland = island;
+    this.mode = 'daily';
 
     // Try to restore saved game state
     const saved = loadGameState();
@@ -77,6 +81,9 @@ class GameStore {
   }
 
   private persistGameState() {
+    // Only persist daily mode
+    if (this.mode !== 'daily') return;
+
     const state: SavedGameState = {
       puzzleDate: this.puzzleDate,
       puzzleNumber: this.puzzleNumber,
@@ -84,6 +91,11 @@ class GameStore {
       gameStatus: this.gameStatus,
     };
     saveGameState(state);
+  }
+
+  private getRandomIsland(): Island {
+    const index = Math.floor(Math.random() * islands.length);
+    return islands[index];
   }
 
   submitGuess(island: Island): Guess | null {
@@ -104,11 +116,42 @@ class GameStore {
     return guess;
   }
 
+  setMode(newMode: GameMode) {
+    if (newMode === this.mode) return;
+
+    this.mode = newMode;
+
+    if (newMode === 'daily') {
+      // Switch back to daily - restore today's puzzle
+      this.init();
+    } else {
+      // Switch to infinite - start fresh with random island
+      this.targetIsland = this.getRandomIsland();
+      this.puzzleNumber = 0;
+      this.puzzleDate = '';
+      this.guesses = [];
+      this.gameStatus = 'playing';
+    }
+  }
+
+  nextIsland() {
+    // Only works in infinite mode
+    if (this.mode !== 'infinite') return;
+
+    this.targetIsland = this.getRandomIsland();
+    this.guesses = [];
+    this.gameStatus = 'playing';
+  }
+
   reset() {
-    const { island, puzzleNumber, puzzleDate } = getTodaysPuzzle(islands);
-    this.targetIsland = island;
-    this.puzzleNumber = puzzleNumber;
-    this.puzzleDate = puzzleDate;
+    if (this.mode === 'daily') {
+      const { island, puzzleNumber, puzzleDate } = getTodaysPuzzle(islands);
+      this.targetIsland = island;
+      this.puzzleNumber = puzzleNumber;
+      this.puzzleDate = puzzleDate;
+    } else {
+      this.targetIsland = this.getRandomIsland();
+    }
     this.guesses = [];
     this.gameStatus = 'playing';
     this.persistGameState();

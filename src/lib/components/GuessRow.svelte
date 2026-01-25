@@ -49,11 +49,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: var(--radius-sm);
-    min-height: 2.5rem;
+    min-height: 1.75rem;
     font-family: var(--font-display);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     background-color: var(--color-surface);
     transition: background-color var(--transition-fast);
   }

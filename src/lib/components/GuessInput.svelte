@@ -182,13 +182,13 @@
 
   .guess-input {
     flex: 1;
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-sm);
     border: none;
     border-radius: var(--radius-sm);
     background-color: var(--color-surface);
     color: var(--color-text);
     font-family: var(--font-text);
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .guess-input::placeholder {
@@ -201,13 +201,13 @@
   }
 
   .guess-button {
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-sm);
     border: none;
     border-radius: var(--radius-sm);
     background-color: var(--color-surface);
     color: var(--color-text);
     font-family: var(--font-text);
-    font-size: 1rem;
+    font-size: 0.9rem;
     transition: background-color var(--transition-fast);
   }
 
@@ -236,9 +236,10 @@
   }
 
   .island-option {
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-sm);
     cursor: pointer;
     font-family: var(--font-text);
+    font-size: 0.85rem;
     transition: background-color var(--transition-fast);
   }
 

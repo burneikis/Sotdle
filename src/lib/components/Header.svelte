@@ -42,27 +42,31 @@
 
 <style>
   .header {
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-md);
     text-align: center;
+    flex-shrink: 0;
   }
 
   .header-content {
     max-width: 600px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
   }
 
   .logo {
-    height: 3rem;
+    height: 2rem;
     width: auto;
-    margin: 0 auto var(--spacing-xs);
   }
 
   .nav {
     display: flex;
     justify-content: center;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
     font-family: var(--font-body);
-    font-size: 0.85rem;
+    font-size: 0.75rem;
   }
 
   .nav-button,
@@ -71,7 +75,7 @@
     border: none;
     color: var(--color-text);
     text-decoration: none;
-    padding: var(--spacing-xs) var(--spacing-sm);
+    padding: 2px var(--spacing-xs);
     border-radius: var(--radius-sm);
     transition: background-color var(--transition-fast);
   }
