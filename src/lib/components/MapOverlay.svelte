@@ -43,7 +43,9 @@
         onclick={onClose}
         aria-label="Close map"
       >
-        Close
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
       </button>
     </div>
   </div>
@@ -60,9 +62,12 @@
     align-items: center;
     justify-content: center;
     background-color: var(--color-overlay);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     z-index: 100;
     padding: var(--spacing-md);
     cursor: pointer;
+    animation: backdropFade 0.2s ease-out;
   }
 
   .overlay-content {
@@ -70,30 +75,47 @@
     cursor: default;
     max-width: 90vmin;
     max-height: 90vmin;
+    animation: modalEnter 0.3s var(--ease-out-expo);
   }
 
   .map-image {
     width: 100%;
     height: auto;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
+    border: 3px solid var(--color-wood);
+    box-shadow:
+      0 0 0 1px var(--color-wood-light),
+      0 0 0 3px var(--color-wood-dark),
+      0 16px 48px rgba(0, 0, 0, 0.5);
   }
 
   .close-button {
     position: absolute;
-    top: var(--spacing-sm);
-    right: var(--spacing-sm);
-    padding: var(--spacing-xs) var(--spacing-md);
-    border: none;
-    border-radius: var(--radius-sm);
-    background-color: var(--color-surface);
+    top: calc(-1 * var(--spacing-md));
+    right: calc(-1 * var(--spacing-md));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-full);
+    background: var(--color-surface);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     color: var(--color-text);
-    font-family: var(--font-text);
-    font-size: 0.9rem;
     cursor: pointer;
-    transition: background-color var(--transition-fast);
+    transition: all var(--transition-fast);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
 
   .close-button:hover {
-    background-color: var(--color-surface-hover);
+    background: var(--color-surface-hover);
+    color: var(--color-gold);
+    transform: scale(1.05);
+  }
+
+  .close-button:active {
+    transform: scale(0.95);
   }
 </style>
