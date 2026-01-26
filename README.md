@@ -1,42 +1,20 @@
-# sv
+# Sotdle
+Sea of Thieves wordle clone
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+## Help
+You get 6 guesses to get the correct answer.
+On each guess this happens:
+if you guess correctly your guess is shown in green
 
-## Creating a project
+if you guess is in the correct region you guess is shown in yellow and a compass direction is shown pointing towards the answer from your guess
 
-If you're seeing this, you've probably already done this step. Congrats!
+if you guess incorrectly then your guess is shown with no change in background colour.
 
-```sh
-# create a new project
-npx sv create my-app
-```
+if you do not get the guess in 6 attempts and you press the new "Answer" button, you will see the answer.
 
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-npx sv create --template minimal --types ts --install npm .
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Binds
+- Enter: Submit guess
+- E: Easy mode (map)
+- M: Easy mode (map)
+- Tab: Next puzzle, Select guess input
+- N: Next Puzzle
