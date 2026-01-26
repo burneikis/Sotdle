@@ -29,7 +29,7 @@
         {themeStore.isDark ? 'Light' : 'Dark'}
       </button>
       <a
-        href="https://github.com/alexburneikis/sotdle"
+        href="https://github.com/burneikis/sotdle"
         target="_blank"
         rel="noopener noreferrer"
         class="nav-link"
