@@ -3,7 +3,6 @@ import type { Statistics, Guess } from '$lib/types';
 const STORAGE_KEYS = {
   STATISTICS: 'sotdle-statistics',
   GAME_STATE: 'sotdle-game-state',
-  THEME: 'sotdle-theme',
 } as const;
 
 /**
@@ -95,18 +94,4 @@ export function saveGameState(state: SavedGameState): void {
 export function clearGameState(): void {
   if (!isBrowser()) return;
   localStorage.removeItem(STORAGE_KEYS.GAME_STATE);
-}
-
-/**
- * Load theme preference.
- */
-export function loadTheme(): 'light' | 'dark' {
-  return getFromStorage<'light' | 'dark'>(STORAGE_KEYS.THEME, 'light');
-}
-
-/**
- * Save theme preference.
- */
-export function saveTheme(theme: 'light' | 'dark'): void {
-  saveToStorage(STORAGE_KEYS.THEME, theme);
 }

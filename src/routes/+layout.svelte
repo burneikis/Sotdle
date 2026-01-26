@@ -3,13 +3,11 @@
   import { onMount } from 'svelte';
   import { gameStore } from '$lib/stores/game.svelte';
   import { statisticsStore } from '$lib/stores/statistics.svelte';
-  import { themeStore } from '$lib/stores/theme.svelte';
 
   let { children } = $props();
 
   onMount(() => {
     // Initialize stores on client
-    themeStore.init();
     statisticsStore.init();
     gameStore.init();
   });
